@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import styles from  './styles/styles.module.css';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         >
           Learn React
         </a>
+
+        <p className={styles.error}>THIS IS MY CSS MODULE STYLED PARA</p>
       </header>
     </div>
   );
