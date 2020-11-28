@@ -14,6 +14,11 @@ const burger = (props) => {
 
         ingredients = [...ingredients, ...layers]
     }
+   
+
+    if(ingredients.length == 0) {
+        ingredients = <p>Only buns baby!</p>
+    }
 
     return (
         <div className={styles.Burger}>

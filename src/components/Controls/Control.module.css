@@ -1,0 +1,17 @@
+.controlWrapper {
+    margin-bottom: 10px;
+}
+
+.controlItem{
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 35px 100px 35px;
+    grid-auto-flow: column;
+    grid-gap: 15px;
+    
+}
+
+.controlItem button {
+    display: block;
+    width: 100%;
+}

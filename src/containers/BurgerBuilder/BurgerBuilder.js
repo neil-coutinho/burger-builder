@@ -1,6 +1,8 @@
 import react, { Component } from "react"; 
 import Aux from "../../Aux";
 import Burger from "../../components/Burger/Burger";
+import Controls from "../../components/Controls/Controls";
+import styles from "./BurgerBuilder.module.css";
 class BurgerBuilder extends Component {
 
     constructor() {
@@ -22,8 +24,11 @@ class BurgerBuilder extends Component {
      
         return (
             <Aux>
-                <div><Burger ingredients={this.state.ingredients}/></div>
-                <div>Controls</div>
+                <div className={styles.burgerBuilder}>
+                    <div className={styles.burgerPreview}><Burger ingredients={this.state.ingredients}/></div>
+                    <div className={styles.burgerControls}><Controls/></div>
+                </div>   
+                
             </Aux>
         );
     }

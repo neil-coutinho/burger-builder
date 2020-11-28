@@ -1,0 +1,14 @@
+.burgerBuilder {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: minmax(1fr, 480px);
+    justify-items: center;
+}
+
+.burgerPreview {
+
+}
+
+.burgerControls {
+
+}
