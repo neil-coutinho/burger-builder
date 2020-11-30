@@ -5,8 +5,8 @@ import Controls from "../../components/Controls/Controls";
 import styles from "./BurgerBuilder.module.css";
 class BurgerBuilder extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         const burger = new Map();
         burger.set('salad', 1);
         burger.set('bacon', 2);
@@ -19,6 +19,30 @@ class BurgerBuilder extends Component {
 
     }
 
+    addIngredientHandler = (type) => {
+        let oldCount = 0;
+      
+        const ingredients = this.state.ingredients;
+        
+        
+        if(ingredients.has(type)) {
+            oldCount = this.state.ingredients.get(type);
+        } 
+
+       const updatedCount = oldCount + 1;
+       const updatedIngredients = new Map(this.state.ingredients);
+       updatedIngredients.set(type, updatedCount);
+        
+       this.setState({ingredients: updatedIngredients});
+
+      
+
+    }
+
+
+    removeIngredientHander = (type) => {
+
+    }
 
     render() {
      
@@ -26,7 +50,7 @@ class BurgerBuilder extends Component {
             <Aux>
                 <div className={styles.burgerBuilder}>
                     <div className={styles.burgerPreview}><Burger ingredients={this.state.ingredients}/></div>
-                    <div className={styles.burgerControls}><Controls/></div>
+                    <div className={styles.burgerControls}><Controls addIngredientHandler={this.addIngredientHandler} /></div>
                 </div>   
                 
             </Aux>

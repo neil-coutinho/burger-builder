@@ -6,7 +6,7 @@ const control = (props) => {
            <div className={styles.controlItem}>
                 <button>-</button>
                 <span>{props.name}</span>
-                <button>+</button>
+                <button onClick={props.addIngredientHandler}>+</button>
            </div>
         </div>
     )
