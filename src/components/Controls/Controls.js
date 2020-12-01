@@ -11,8 +11,7 @@ const controls = (props) => {
         { name: "Bacon" , type: "bacon" },
     ]
 
-    console.log(props.ingredients);
-
+    
     const ctrls = controlList.map(({name, type}, index) => {
 
         let count = 0;

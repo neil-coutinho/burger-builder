@@ -4,7 +4,7 @@ const control = (props) => {
     return (
         <div className={styles.controlWrapper}>
            <div className={styles.controlItem}>
-                <button onClick={props.removeIngredientHandler}>-</button>
+                <button onClick={props.removeIngredientHandler} disabled={props.count == 0}>-</button>
                 <span>{props.name} - [{ props.count }]</span>
                 <button onClick={props.addIngredientHandler}>+</button>
            </div>
