@@ -69,7 +69,7 @@ class BurgerBuilder extends Component {
                     <div className={styles.burgerPreview}><Burger ingredients={this.state.ingredients}/></div>
                     <div className={styles.burgerControls}>
                         <Controls addIngredientHandler={ this.addIngredientHandler } 
-                        removeIngredientHandler={this.removeIngredientHandler}  /></div>
+                        removeIngredientHandler={this.removeIngredientHandler}  ingredients={this.state.ingredients}/></div>
                 </div>   
                 
             </Aux>

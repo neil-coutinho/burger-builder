@@ -11,9 +11,23 @@ const controls = (props) => {
         { name: "Bacon" , type: "bacon" },
     ]
 
-    const ctrls = controlList.map(({name, type}, index) => <Control name={name} type={type} key={ `ctrl_${index}` } 
-    addIngredientHandler={() => {props.addIngredientHandler(type)}}
-    removeIngredientHandler={() => {props.removeIngredientHandler(type)}}></Control>)
+    console.log(props.ingredients);
+
+    const ctrls = controlList.map(({name, type}, index) => {
+
+        let count = 0;
+        if(props.ingredients.has(type)) {
+            count = props.ingredients.get(type);
+        }
+
+        return  <Control 
+        name={name} 
+        type={type} 
+        key={ `ctrl_${index}` }
+        count={ count }
+        addIngredientHandler={() => {props.addIngredientHandler(type)}}
+        removeIngredientHandler={() => {props.removeIngredientHandler(type)}}></Control>
+    })
 
     return (
        <Aux>
