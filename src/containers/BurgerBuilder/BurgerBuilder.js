@@ -40,9 +40,26 @@ class BurgerBuilder extends Component {
     }
 
 
-    removeIngredientHander = (type) => {
+    removeIngredientHandler = (type) => {
+        let oldCount = 0;
+        const ingredients = this.state.ingredients;
 
+        if(ingredients.has(type)) {
+            oldCount = this.state.ingredients.get(type);
+        } 
+        
+        let updatedCount = oldCount;
+        if(oldCount > 0) {
+            updatedCount -= 1;
+        }
+
+        const updatedIngredients = new Map(this.state.ingredients);
+        updatedIngredients.set(type, updatedCount);
+
+        this.setState({ingredients: updatedIngredients});
     }
+
+    
 
     render() {
      
@@ -50,7 +67,9 @@ class BurgerBuilder extends Component {
             <Aux>
                 <div className={styles.burgerBuilder}>
                     <div className={styles.burgerPreview}><Burger ingredients={this.state.ingredients}/></div>
-                    <div className={styles.burgerControls}><Controls addIngredientHandler={this.addIngredientHandler} /></div>
+                    <div className={styles.burgerControls}>
+                        <Controls addIngredientHandler={ this.addIngredientHandler } 
+                        removeIngredientHandler={this.removeIngredientHandler}  /></div>
                 </div>   
                 
             </Aux>

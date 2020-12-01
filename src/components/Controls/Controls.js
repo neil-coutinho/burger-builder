@@ -11,7 +11,9 @@ const controls = (props) => {
         { name: "Bacon" , type: "bacon" },
     ]
 
-    const ctrls = controlList.map(({name, type}, index) => <Control name={name} type={type} key={ `ctrl_${index}` } addIngredientHandler={() => {props.addIngredientHandler(type)}}></Control>)
+    const ctrls = controlList.map(({name, type}, index) => <Control name={name} type={type} key={ `ctrl_${index}` } 
+    addIngredientHandler={() => {props.addIngredientHandler(type)}}
+    removeIngredientHandler={() => {props.removeIngredientHandler(type)}}></Control>)
 
     return (
        <Aux>
