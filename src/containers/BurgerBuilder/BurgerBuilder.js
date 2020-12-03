@@ -8,32 +8,49 @@ class BurgerBuilder extends Component {
     constructor(props) {
         super(props)
         const burger = new Map();
-        burger.set('salad', 1);
-        burger.set('bacon', 2);
-        burger.set('meat', 2);
+        let price = 0;
+        //burger.set('salad', 1);
+       // burger.set('bacon', 2);
+       // burger.set('meat', 2);
+
 
         this.state = {
-            ingredients : burger
+            ingredients : burger,
+            totalPrice: 0
+           
         }
 
+        this.priceList = [
+            { price: 1 , type: "meat" },
+            { price: 0.2 , type: "cheese" },
+            { price: 0.1 , type: "salad" },
+            { price: 1.3 , type: "bacon" },
+        ]
+
+        price = this.getTotalPrice(burger);
+
+        this.setState({ ingredients : burger, totalPrice: price});
 
     }
 
     addIngredientHandler = (type) => {
         let oldCount = 0;
+        let price = 0;
       
         const ingredients = this.state.ingredients;
         
-        
         if(ingredients.has(type)) {
-            oldCount = this.state.ingredients.get(type);
+            oldCount = ingredients.get(type);
         } 
 
        const updatedCount = oldCount + 1;
-       const updatedIngredients = new Map(this.state.ingredients);
+       const updatedIngredients = new Map(ingredients);
        updatedIngredients.set(type, updatedCount);
-        
-       this.setState({ingredients: updatedIngredients});
+       
+       //calculate total price
+       price = this.getTotalPrice(updatedIngredients);
+
+       this.setState({ingredients: updatedIngredients, totalPrice: price});
 
       
 
@@ -42,6 +59,7 @@ class BurgerBuilder extends Component {
 
     removeIngredientHandler = (type) => {
         let oldCount = 0;
+        let price = 0;
         const ingredients = this.state.ingredients;
 
         if(ingredients.has(type)) {
@@ -56,8 +74,30 @@ class BurgerBuilder extends Component {
         const updatedIngredients = new Map(this.state.ingredients);
         updatedIngredients.set(type, updatedCount);
 
-        this.setState({ingredients: updatedIngredients});
+      
+         //calculate total price
+         price = this.getTotalPrice(updatedIngredients);
+
+         this.setState({ingredients: updatedIngredients, totalPrice: price});
     }
+
+    getTotalPrice(ingredients) {
+        let total = 0;
+        
+        for(const[key, count] of ingredients) {
+           let itemPrice = this.priceList.filter(({price, type}) => type === key).map(({price}) => price);
+           let ingredientCost = 0;
+           if(itemPrice) {
+            ingredientCost = (itemPrice * count);
+           }
+
+           total += ingredientCost;
+        }
+       
+        return total.toFixed(2);
+
+    }
+
 
     
 
@@ -68,7 +108,9 @@ class BurgerBuilder extends Component {
                 <div className={styles.burgerBuilder}>
                     <div className={styles.burgerPreview}><Burger ingredients={this.state.ingredients}/></div>
                     <div className={styles.burgerControls}>
-                        <Controls addIngredientHandler={ this.addIngredientHandler } 
+                        <Controls 
+                        totalPrice = {this.state.totalPrice}
+                        addIngredientHandler={ this.addIngredientHandler } 
                         removeIngredientHandler={this.removeIngredientHandler}  ingredients={this.state.ingredients}/></div>
                 </div>   
                 

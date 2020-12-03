@@ -30,6 +30,7 @@ const controls = (props) => {
 
     return (
        <Aux>
+           <p>Total Price: <strong>{ props.totalPrice }</strong></p>
            { ctrls } 
        </Aux>
     )
