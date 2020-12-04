@@ -10,13 +10,14 @@ class BurgerBuilder extends Component {
         const burger = new Map();
         let price = 0;
         //burger.set('salad', 1);
-       // burger.set('bacon', 2);
+        burger.set('bacon', 2);
        // burger.set('meat', 2);
 
 
         this.state = {
             ingredients : burger,
-            totalPrice: 0
+            totalPrice: 0,
+            orderButtonDisabled: true
            
         }
 
@@ -29,8 +30,28 @@ class BurgerBuilder extends Component {
 
         price = this.getTotalPrice(burger);
 
-        this.setState({ ingredients : burger, totalPrice: price});
+        const isDisabled = this.updateOrderButtonState(burger);
 
+        this.setState({ ingredients : burger, totalPrice: price, orderButtonDisabled: isDisabled});
+
+    }
+
+
+    updateOrderButtonState(ingredients) {
+        let count = 0;
+
+        count = Array.from(ingredients, ([key, value]) => value).reduce((acc, value) => {
+            acc +=value;
+            return acc;
+        }, count);
+
+       
+
+        if(count == 0) {
+            return true;
+        }
+
+        return false;
     }
 
     addIngredientHandler = (type) => {
@@ -50,7 +71,9 @@ class BurgerBuilder extends Component {
        //calculate total price
        price = this.getTotalPrice(updatedIngredients);
 
-       this.setState({ingredients: updatedIngredients, totalPrice: price});
+       const isDisabled = this.updateOrderButtonState(updatedIngredients);
+
+       this.setState({ingredients: updatedIngredients, totalPrice: price, orderButtonDisabled: isDisabled});
 
       
 
@@ -78,7 +101,9 @@ class BurgerBuilder extends Component {
          //calculate total price
          price = this.getTotalPrice(updatedIngredients);
 
-         this.setState({ingredients: updatedIngredients, totalPrice: price});
+         const isDisabled = this.updateOrderButtonState(updatedIngredients);
+
+         this.setState({ingredients: updatedIngredients, totalPrice: price, orderButtonDisabled: isDisabled});
     }
 
     getTotalPrice(ingredients) {
@@ -108,7 +133,8 @@ class BurgerBuilder extends Component {
                 <div className={styles.burgerBuilder}>
                     <div className={styles.burgerPreview}><Burger ingredients={this.state.ingredients}/></div>
                     <div className={styles.burgerControls}>
-                        <Controls 
+                        <Controls
+                        orderButtonDisabled={this.state.orderButtonDisabled} 
                         totalPrice = {this.state.totalPrice}
                         addIngredientHandler={ this.addIngredientHandler } 
                         removeIngredientHandler={this.removeIngredientHandler}  ingredients={this.state.ingredients}/></div>

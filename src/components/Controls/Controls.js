@@ -32,6 +32,11 @@ const controls = (props) => {
        <Aux>
            <p>Total Price: <strong>{ props.totalPrice }</strong></p>
            { ctrls } 
+
+           <p>
+           <button disabled={props.orderButtonDisabled}>ORDER NOW</button>
+           </p>
+           
        </Aux>
     )
 }
