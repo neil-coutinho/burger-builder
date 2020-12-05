@@ -11,9 +11,9 @@ class BurgerBuilder extends Component {
         super(props)
         const burger = new Map();
         let price = 0;
-        //burger.set('salad', 1);
+        burger.set('salad', 1);
         burger.set('bacon', 2);
-       // burger.set('meat', 2);
+        burger.set('meat', 2);
 
 
         this.state = {
@@ -133,7 +133,7 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
 
-                <Modal><OrderSummary/></Modal>
+                <Modal><OrderSummary order={this.state.ingredients}/></Modal>
 
 
                 <div className={styles.burgerBuilder}>
