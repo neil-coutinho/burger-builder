@@ -3,6 +3,7 @@ import Aux from "../../Aux";
 import Burger from "../../components/Burger/Burger";
 import Controls from "../../components/Controls/Controls";
 import styles from "./BurgerBuilder.module.css";
+import Modal from "../../components/Modal/Modal";
 class BurgerBuilder extends Component {
 
     constructor(props) {
@@ -130,6 +131,10 @@ class BurgerBuilder extends Component {
      
         return (
             <Aux>
+
+                <Modal></Modal>
+
+
                 <div className={styles.burgerBuilder}>
                     <div className={styles.burgerPreview}><Burger ingredients={this.state.ingredients}/></div>
                     <div className={styles.burgerControls}>
