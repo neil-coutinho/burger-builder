@@ -4,6 +4,7 @@ import Burger from "../../components/Burger/Burger";
 import Controls from "../../components/Controls/Controls";
 import styles from "./BurgerBuilder.module.css";
 import Modal from "../../components/Modal/Modal";
+import OrderSummary from "../../components/Order/Order";
 class BurgerBuilder extends Component {
 
     constructor(props) {
@@ -132,7 +133,7 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
 
-                <Modal></Modal>
+                <Modal><OrderSummary/></Modal>
 
 
                 <div className={styles.burgerBuilder}>
