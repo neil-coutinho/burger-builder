@@ -10,12 +10,7 @@ class BurgerBuilder extends Component {
     constructor(props) {
         super(props)
         const burger = new Map();
-        let price = 0;
-        burger.set('salad', 1);
-        burger.set('bacon', 2);
-        burger.set('meat', 2);
-
-
+      
         this.state = {
             ingredients : burger,
             totalPrice: 0,
@@ -31,24 +26,21 @@ class BurgerBuilder extends Component {
             { price: 1.3 , type: "bacon" },
         ]
 
-        price = this.getTotalPrice(burger);
-
-        const isDisabled = this.updateOrderButtonState(burger);
-
-        this.setState({ ingredients : burger, totalPrice: price, orderButtonDisabled: isDisabled});
-
+       
     }
 
 
     updateOrderButtonState(ingredients) {
+       
         let count = 0;
 
         count = Array.from(ingredients, ([key, value]) => value).reduce((acc, value) => {
+            
             acc +=value;
             return acc;
         }, count);
 
-       
+      
 
         if(count == 0) {
             return true;

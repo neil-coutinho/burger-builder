@@ -11,6 +11,7 @@ const controls = (props) => {
         { name: "Bacon" , type: "bacon" },
     ]
 
+   
     
     const ctrls = controlList.map(({name, type}, index) => {
 
@@ -34,6 +35,7 @@ const controls = (props) => {
            { ctrls } 
 
            <p>
+               Button disabled {props.orderButtonDisabled}
            <button disabled={props.orderButtonDisabled} onClick={props.orderNow}>ORDER NOW</button>
            </p>
            
