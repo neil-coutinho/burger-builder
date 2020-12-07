@@ -19,7 +19,8 @@ class BurgerBuilder extends Component {
         this.state = {
             ingredients : burger,
             totalPrice: 0,
-            orderButtonDisabled: true
+            orderButtonDisabled: true,
+            orderInProgress: false
            
         }
 
@@ -126,6 +127,10 @@ class BurgerBuilder extends Component {
     }
 
 
+    orderNow = () => {
+        this.setState({orderInProgress: true});
+       
+    }
     
 
     render() {
@@ -133,7 +138,7 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
 
-                <Modal><OrderSummary order={this.state.ingredients}/></Modal>
+                <Modal show={this.state.orderInProgress}><OrderSummary order={this.state.ingredients}/></Modal>
 
 
                 <div className={styles.burgerBuilder}>
@@ -141,6 +146,7 @@ class BurgerBuilder extends Component {
                     <div className={styles.burgerControls}>
                         <Controls
                         orderButtonDisabled={this.state.orderButtonDisabled} 
+                        orderNow = { this.orderNow }
                         totalPrice = {this.state.totalPrice}
                         addIngredientHandler={ this.addIngredientHandler } 
                         removeIngredientHandler={this.removeIngredientHandler}  ingredients={this.state.ingredients}/></div>
