@@ -123,6 +123,10 @@ class BurgerBuilder extends Component {
         this.setState({orderInProgress: true});
        
     }
+
+    dismiss() {
+        this.setState({orderInProgress: false});
+    }
     
 
     render() {
@@ -130,7 +134,7 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
 
-                <Modal show={this.state.orderInProgress}><OrderSummary order={this.state.ingredients}/></Modal>
+                <Modal show={this.state.orderInProgress} dismiss={this.dismiss.bind(this)}><OrderSummary order={this.state.ingredients}/></Modal>
 
 
                 <div className={styles.burgerBuilder}>
