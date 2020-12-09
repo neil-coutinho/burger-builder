@@ -4,16 +4,11 @@ import Aux from "../../Aux";
 
 const controls = (props) => {
 
-    const controlList = [
-        { name: "Meat" , type: "meat" },
-       { name: "Cheese" , type: "cheese" },
-        { name: "Salad" , type: "salad" },
-        { name: "Bacon" , type: "bacon" },
-    ]
+   
 
    
     
-    const ctrls = controlList.map(({name, type}, index) => {
+    const ctrls = props.ingredientList.map(({name, type}, index) => {
 
         let count = 0;
         if(props.ingredients.has(type)) {

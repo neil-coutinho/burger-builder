@@ -10,6 +10,13 @@ class BurgerBuilder extends Component {
     constructor(props) {
         super(props)
         const burger = new Map();
+
+        this.ingredientList = [
+            { name: "Meat" , type: "meat" },
+            { name: "Cheese" , type: "cheese" },
+            { name: "Salad" , type: "salad" },
+            { name: "Bacon" , type: "bacon" },
+        ]
       
         this.state = {
             ingredients : burger,
@@ -134,13 +141,16 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
 
-                <Modal show={this.state.orderInProgress} dismiss={this.dismiss.bind(this)}><OrderSummary order={this.state.ingredients}/></Modal>
+                <Modal show={this.state.orderInProgress} dismiss={this.dismiss.bind(this)}>
+                    <OrderSummary order={this.state.ingredients} totalPrice = {this.state.totalPrice} ingredientList={this.ingredientList}/>
+                </Modal>
 
 
                 <div className={styles.burgerBuilder}>
                     <div className={styles.burgerPreview}><Burger ingredients={this.state.ingredients}/></div>
                     <div className={styles.burgerControls}>
                         <Controls
+                        ingredientList={this.ingredientList}
                         orderButtonDisabled={this.state.orderButtonDisabled} 
                         orderNow = { this.orderNow }
                         totalPrice = {this.state.totalPrice}
