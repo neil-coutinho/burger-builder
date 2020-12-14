@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "./Toolbar.module.css";
 const toolbar = (props) => {
     return (
 
-        <header>Header will come here</header>
+        <header className={styles.mainNav}>Header will come here</header>
 
     )
 }
