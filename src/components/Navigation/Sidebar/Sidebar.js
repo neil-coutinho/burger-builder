@@ -1,7 +1,11 @@
 import React from "react";
+import styles from "./Sidebar.module.css";
 const sidebar = (props) => {
+
+    const sidebarClasses = [styles.sideNav, styles.open];
+
     return (
-        <sidebar>Sidebar will come here</sidebar>
+        <div className={sidebarClasses.join(' ')}>Sidebar will come here</div>
     )
 }
 

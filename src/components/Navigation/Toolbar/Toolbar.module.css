@@ -9,4 +9,5 @@
     align-items: center;
     box-sizing: border-box;
     color: #fff;
+    z-index: 90;
 }
