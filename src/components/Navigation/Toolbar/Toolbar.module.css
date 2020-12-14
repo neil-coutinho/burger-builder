@@ -11,3 +11,32 @@
     color: #fff;
     z-index: 90;
 }
+
+.hamburgerIcon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.hamburgerIcon span,
+.hamburgerIcon span:before,
+.hamburgerIcon span:after {
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    content: ' ';
+}
+
+.hamburgerIcon span:before {
+    top: -5px;
+}
+
+
+.hamburgerIcon span:after {
+    bottom: -5px;
+}
+
+

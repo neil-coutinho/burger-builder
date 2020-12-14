@@ -3,7 +3,13 @@ import styles from "./Toolbar.module.css";
 const toolbar = (props) => {
     return (
 
-        <header className={styles.mainNav}>Header will come here</header>
+        <header className={styles.mainNav}>
+            <div className={styles.hamburgerIcon}>
+                <span></span>
+            </div>
+           
+            Header will come here
+        </header>
 
     )
 }
