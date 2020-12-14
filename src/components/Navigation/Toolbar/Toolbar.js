@@ -4,7 +4,7 @@ const toolbar = (props) => {
     return (
 
         <header className={styles.mainNav}>
-            <div className={styles.hamburgerIcon}>
+            <div className={styles.hamburgerIcon} onClick={props.toggleSidebar}>
                 <span></span>
             </div>
            
