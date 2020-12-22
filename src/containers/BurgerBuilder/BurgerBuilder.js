@@ -134,6 +134,10 @@ class BurgerBuilder extends Component {
     dismiss() {
         this.setState({orderInProgress: false});
     }
+
+    onOrderHandler = () => {
+        console.log('Order Handler')
+    }
     
 
     render() {
@@ -142,7 +146,7 @@ class BurgerBuilder extends Component {
             <Aux>
 
                 <Modal show={this.state.orderInProgress} dismiss={this.dismiss.bind(this)}>
-                    <OrderSummary order={this.state.ingredients} totalPrice = {this.state.totalPrice} ingredientList={this.ingredientList}/>
+                    <OrderSummary onOrderHandler={this.onOrderHandler} order={this.state.ingredients} totalPrice = {this.state.totalPrice} ingredientList={this.ingredientList}/>
                 </Modal>
 
 

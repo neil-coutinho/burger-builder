@@ -34,6 +34,10 @@ const orderSummary = (props) => {
             {summary}
         </ul>
         <p><strong>Total Price: {props.totalPrice}</strong></p>
+
+        <div>
+            <button onClick={props.onOrderHandler}>Order Now</button>
+        </div>
     </Aux>)
 
 
