@@ -5,6 +5,7 @@ import Controls from "../../components/Controls/Controls";
 import styles from "./BurgerBuilder.module.css";
 import Modal from "../../components/Modal/Modal";
 import OrderSummary from "../../components/Order/Order";
+import axios from "../../axios.config";
 class BurgerBuilder extends Component {
 
     constructor(props) {
@@ -135,8 +136,28 @@ class BurgerBuilder extends Component {
         this.setState({orderInProgress: false});
     }
 
-    onOrderHandler = () => {
-        console.log('Order Handler')
+    onOrderHandler = async () => {
+        console.log('Order Handler', this.state)
+
+        const {ingredients , totalPrice} = this.state;
+
+        const selectedIngredients = Array.from(ingredients, ([key, value]) => ({key: key, value: value}));
+       
+
+        const customerInfo = {
+            address: "123 Kad Lane"
+        }
+
+        const data = {
+            ingredients: selectedIngredients,
+            totalPrice,
+            customerInfo
+            
+        }
+
+       const response =  await axios.post('orders.json', data).catch((e) => {console.log('something went wrong')});
+
+       console.log({response})
     }
     
 

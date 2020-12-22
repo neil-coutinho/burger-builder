@@ -4,4 +4,4 @@ const axiosHelper = axios.create({
     baseURL: "https://buger-builder-react-default-rtdb.firebaseio.com/"
 });
 
-export { axiosHelper };
+export default axiosHelper;
