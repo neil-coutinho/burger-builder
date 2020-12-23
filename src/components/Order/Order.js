@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import Aux from "../../Aux";
 
+
 const orderSummary = (props) => {
 
     let summary = [];
@@ -29,6 +30,8 @@ const orderSummary = (props) => {
 
     return (<Aux>
         <h3>Order Summary</h3>
+
+        
         <p>You have created an order with the following ingredients:</p>
         <ul>
             {summary}

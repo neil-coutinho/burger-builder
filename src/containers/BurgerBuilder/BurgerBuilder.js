@@ -6,6 +6,7 @@ import styles from "./BurgerBuilder.module.css";
 import Modal from "../../components/Modal/Modal";
 import OrderSummary from "../../components/Order/Order";
 import axios from "../../axios.config";
+import Spinner from "../../components/Spinner/Spinner";
 class BurgerBuilder extends Component {
 
     constructor(props) {
@@ -23,7 +24,8 @@ class BurgerBuilder extends Component {
             ingredients : burger,
             totalPrice: 0,
             orderButtonDisabled: true,
-            orderInProgress: false
+            orderInProgress: false,
+            orderSaveInProgress: false
            
         }
 
@@ -155,19 +157,35 @@ class BurgerBuilder extends Component {
             
         }
 
-       const response =  await axios.post('orders.json', data).catch((e) => {console.log('something went wrong')});
+        this.setState({orderSaveInProgress: true})
 
+       const response =  await axios.post('orders.json', data).catch((e) => {
+           console.log('something went wrong'); 
+           this.setState({orderSaveInProgress: false})
+        });
+
+        if(response) {
+            this.setState({orderSaveInProgress: false});
+        }
        console.log({response})
     }
     
 
     render() {
-     
+
+        let modal = <OrderSummary onOrderHandler={this.onOrderHandler} order={this.state.ingredients} totalPrice = {this.state.totalPrice} ingredientList={this.ingredientList}/>
+        if(this.state.orderSaveInProgress) {
+            modal =   <Spinner />
+        }
         return (
             <Aux>
 
                 <Modal show={this.state.orderInProgress} dismiss={this.dismiss.bind(this)}>
-                    <OrderSummary onOrderHandler={this.onOrderHandler} order={this.state.ingredients} totalPrice = {this.state.totalPrice} ingredientList={this.ingredientList}/>
+                    
+                    {modal}
+                    
+                  
+                    
                 </Modal>
 
 
