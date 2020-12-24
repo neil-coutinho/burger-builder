@@ -161,12 +161,11 @@ class BurgerBuilder extends Component {
 
        const response =  await axios.post('orders.json', data).catch((e) => {
            console.log('something went wrong'); 
-           this.setState({orderSaveInProgress: false})
+         
+           return false;
         });
 
-        if(response) {
-            this.setState({orderSaveInProgress: false});
-        }
+        this.setState({orderSaveInProgress: false, orderButtonDisabled: false, orderInProgress: false});
        console.log({response})
     }
     
