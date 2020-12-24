@@ -7,6 +7,7 @@ import Modal from "../../components/Modal/Modal";
 import OrderSummary from "../../components/Order/Order";
 import axios from "../../axios.config";
 import Spinner from "../../components/Spinner/Spinner";
+import errorComponent from "../../components/ErrorComponent/ErrorComponent"
 class BurgerBuilder extends Component {
 
     constructor(props) {
@@ -180,11 +181,7 @@ class BurgerBuilder extends Component {
             <Aux>
 
                 <Modal show={this.state.orderInProgress} dismiss={this.dismiss.bind(this)}>
-                    
                     {modal}
-                    
-                  
-                    
                 </Modal>
 
 
@@ -205,4 +202,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default BurgerBuilder;
+export default errorComponent(BurgerBuilder);
