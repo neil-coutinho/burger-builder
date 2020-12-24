@@ -1,10 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 
 
-const errorComponent = (WrappedComponent) => {
-    console.log({WrappedComponent});
+const errorComponent = (WrappedComponent, axios) => {
+    console.log({WrappedComponent, axios});
 
-    return () => <WrappedComponent/>;
+    return class extends Component {
+        render() {
+            return <WrappedComponent/>
+        }
+    }
+
+  
 }
 
 export default errorComponent;
