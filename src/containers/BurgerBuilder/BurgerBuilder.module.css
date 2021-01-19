@@ -1,13 +1,19 @@
 .burgerBuilder {
     display: grid;
     justify-content: center;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    text-align: center;
 }
 
 .burgerPreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
 .burgerControls {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

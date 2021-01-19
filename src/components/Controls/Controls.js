@@ -30,7 +30,7 @@ const controls = (props) => {
            { ctrls } 
 
            <p>
-               Button disabled {props.orderButtonDisabled}
+              
            <button disabled={props.orderButtonDisabled} onClick={props.orderNow}>ORDER NOW</button>
            </p>
            
