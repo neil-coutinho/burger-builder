@@ -3,6 +3,7 @@ import Aux from "../../Aux";
 import BurgerBuilder from "../../containers/BurgerBuilder/BurgerBuilder";
 import styles from "./Layout.module.css";
 import Checkout from "../../containers/Checkout/Checkout";
+import { Route, Switch } from "react-router-dom";
 
 
 const layout = (props) => {
@@ -13,8 +14,13 @@ const layout = (props) => {
         <Aux>
             <div className={styles.toolbar}>Toolbar, Sidebar</div>
             <main className={styles.main}>
-                <BurgerBuilder/>
-                <Checkout ingredients={ingredients}/>
+                <Switch>
+                    <Route path="/checkout"><Checkout ingredients={ingredients}/></Route>
+                    <Route path="/" exact><BurgerBuilder/></Route>
+                </Switch>
+               
+              
+                
             </main>
         </Aux>
             
