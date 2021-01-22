@@ -7,7 +7,7 @@ import { Route, Switch } from "react-router-dom";
 
 
 const layout = (props) => {
-
+  
 
     return (
         // <div className="Layout"> => wrapping el to allow ajacent JSX

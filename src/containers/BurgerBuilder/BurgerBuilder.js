@@ -13,6 +13,7 @@ class BurgerBuilder extends Component {
     constructor(props) {
         super(props)
         const burger = new Map();
+        
 
         this.ingredientList = [
             { name: "Meat" , type: "meat" },
@@ -40,6 +41,9 @@ class BurgerBuilder extends Component {
        
     }
 
+    componentDidMount() {
+        console.log(this.props)
+    }
 
     updateOrderButtonState(ingredients) {
        
@@ -140,7 +144,11 @@ class BurgerBuilder extends Component {
     }
 
     onOrderHandler = async () => {
-        console.log('Order Handler', this.state)
+        console.log('Order Handler', this.state);
+
+        console.log(this.props);
+        this.props.history.push('checkout')
+        return;
 
         const {ingredients , totalPrice} = this.state;
 
