@@ -8,6 +8,8 @@ import OrderSummary from "../../components/Order/Order";
 import axios from "../../axios.config";
 import Spinner from "../../components/Spinner/Spinner";
 import errorComponent from "../../components/ErrorComponent/ErrorComponent"
+import {Route} from "react-router-dom";
+import Checkout from "../Checkout/Checkout";
 class BurgerBuilder extends Component {
 
     constructor(props) {
@@ -145,14 +147,35 @@ class BurgerBuilder extends Component {
 
     onOrderHandler = async () => {
         console.log('Order Handler', this.state);
-
-        console.log(this.props);
-        this.props.history.push('checkout')
-        return;
-
         const {ingredients , totalPrice} = this.state;
+        console.log(this.props);
+
+        let queryParams = [];
 
         const selectedIngredients = Array.from(ingredients, ([key, value]) => ({key: key, value: value}));
+
+        console.log({selectedIngredients});
+
+        queryParams = selectedIngredients.reduce((acc, {key, value}) => {
+            acc.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+            return acc;
+        }, [])
+
+        this.props.history.push({
+            pathname: 'checkout',
+            search: `?${queryParams.join('&')}`
+        })
+
+      
+
+
+
+
+        return;
+
+        
+
+       
        
 
         const customerInfo = {
@@ -187,7 +210,7 @@ class BurgerBuilder extends Component {
         }
         return (
             <Aux>
-
+                
                 <Modal show={this.state.orderInProgress} dismiss={this.dismiss.bind(this)}>
                     {modal}
                 </Modal>

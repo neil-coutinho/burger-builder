@@ -12,6 +12,19 @@ class Checkout extends Component {
 
     componentDidMount() {
         console.log(this.props);
+        console.log(this.props.location.search)
+        console.log()
+        const ingredients = new Map();
+        const queryParams = new URLSearchParams(this.props.location.search);
+        for(let [key, value] of queryParams.entries()) {
+            ingredients.set(key, parseInt(value))
+        }
+
+        this.setState({
+            ingredients,
+        })
+
+        console.log(ingredients)
     }
 
     cancelHandler = () => {
